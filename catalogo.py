@@ -13,6 +13,10 @@ def cargar_catalogo():
 
 def mostrar_catalogo(catalogo):
     """Muestra los productos disponibles en formato de tabla en consola."""
+    if not catalogo:
+        print("\n[!] El catalogo se encuentra vacio.")
+        return
+
     print("\n" + "=" * 55)
     print(f"{'CODIGO':<8} | {'PRODUCTO':<20} | {'PRECIO':<10} | {'STOCK':<6}")
     print("=" * 55)
