@@ -46,4 +46,34 @@ def calcular_descuento_3x2(carrito, catalogo):
                 descuento += grupos_de_tres * catalogo[identificador]["precio"]  # 1 gratis por paquete
     return round(descuento, 2)
 
+def aplicar_descuento(subtotal, tipo_descuento, carrito=None, catalogo=None):
+    """Aplica una regla de descuento al subtotal.
 
+    Args:
+        subtotal (float): Importe antes de descuentos.
+        tipo_descuento (str): Regla elegida: ninguno, porcentaje, mayorista o 3x2.
+        carrito (list[tuple[str, int]], optional): Requerido solo si tipo_descuento es "3x2".
+        catalogo (dict, optional): Requerido solo si tipo_descuento es "3x2".
+
+    Returns:
+        float: Total ajustado y redondeado a dos decimales.
+    """
+    tipo_descuento = tipo_descuento.lower()  # ignora mayúsculas/minúsculas
+    if tipo_descuento == "ninguno":
+        return round(subtotal, 2)
+    elif tipo_descuento == "porcentaje":
+        return round(subtotal * (1 - REGLAS_DESCUENTO["porcentaje"]), 2)
+    elif tipo_descuento == "mayorista":
+        if subtotal >= 200:  # mínimo requerido
+            return round(subtotal * (1 - REGLAS_DESCUENTO["mayorista"]), 2)
+        print("El descuento mayorista requiere una compra mínima de $200.00.")
+        return round(subtotal, 2)
+    elif tipo_descuento == "3x2":
+        if carrito is None or catalogo is None:  # datos obligatorios
+            print("La promoción 3x2 requiere el carrito y el catálogo.")
+            return round(subtotal, 2)
+        descuento = calcular_descuento_3x2(carrito, catalogo)
+        return round(subtotal - descuento, 2)
+    else:
+        print("Tipo de descuento no válido; no se aplicó descuento.")
+        return round(subtotal, 2)
