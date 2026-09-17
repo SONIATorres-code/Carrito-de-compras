@@ -13,4 +13,8 @@ def generar_ticket(carrito, catalogo, total):
     Returns:
         tuple[str, str, float]: Folio, fecha ISO y total de la venta.
     """
+    folio = f"F{date.today():%Y%m%d}"
+    fecha = date.today().isoformat()
+    print("\n======= TICKET DE COMPRA =======")
+    print(f"Folio: {folio}\nFecha: {fecha}")
 
