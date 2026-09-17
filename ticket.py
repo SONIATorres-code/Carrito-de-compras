@@ -17,4 +17,9 @@ def generar_ticket(carrito, catalogo, total):
     fecha = date.today().isoformat()
     print("\n======= TICKET DE COMPRA =======")
     print(f"Folio: {folio}\nFecha: {fecha}")
-
+    for identificador, cantidad in carrito:
+        producto = catalogo[identificador]
+        print(f"{producto['nombre']}: {cantidad} x ${producto['precio']:.2f}")
+    print(f"TOTAL PAGADO: ${total:.2f}")
+    print("================================")
+    return (folio, fecha, total)
