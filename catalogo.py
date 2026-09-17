@@ -1,16 +1,19 @@
 def cargar_catalogo():
+    """Retorna el catalogo de productos en un diccionario de diccionarios."""
     catalogo = {
         "P001": {"nombre": "Cafe Americano", "precio": 45.0, "stock": 20},
-        "P001": {"nombre": "Capuchino", "precio": 55.0, "stock": 18},
-        "P001": {"nombre": "Pay de Limón", "precio": 35.0, "stock": 10},
-        "P001": {"nombre": "Té Verde", "precio": 40.0, "stock": 12},
-        "P001": {"nombre": "Sandwich Jamón", "precio": 38.0, "stock": 8}
+        "P002": {"nombre": "Capuchino",      "precio": 55.0, "stock": 18},
+        "P003": {"nombre": "Pay de Limon",   "precio": 35.0, "stock": 10},
+        "P004": {"nombre": "Te Verde",       "precio": 40.0, "stock": 12},
+        "P005": {"nombre": "Sandwich Jamon", "precio": 38.0, "stock": 8}
     }
-    return catalogo 
+    return catalogo
 
-def mostrar_catalogo(catalogo): 
+
+def mostrar_catalogo(catalogo):
+    """Muestra los productos disponibles en formato de tabla en consola."""
     print("\n" + "=" * 55)
-    print(f"{'CÓDIGO':<8} | {'PRODUCTO':<20 | {'PRECIO': <10} | {'STOCK': <6}")
+    print(f"{'CODIGO':<8} | {'PRODUCTO':<20} | {'PRECIO':<10} | {'STOCK':<6}")
     print("=" * 55)
     for id_prod, info in catalogo.items():
         nombre = info["nombre"]
