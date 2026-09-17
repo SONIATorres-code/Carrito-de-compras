@@ -6,6 +6,7 @@ def cargar_catalogo():
         "P003": {"nombre": "Pay de Limon",   "precio": 35.0, "stock": 10},
         "P004": {"nombre": "Te Verde",       "precio": 40.0, "stock": 12},
         "P005": {"nombre": "Sandwich Jamon", "precio": 38.0, "stock": 8}
+        "P006": {"nombre": "Muffin Vainilla", "precio": 28.0, "stock": 10},
     }
     return catalogo
 
